@@ -10,4 +10,34 @@ class Product:
         self.name = name
         self.description = description
         self.quantity = quantity
-        self.price = price
+        self.__price = price
+
+    @classmethod
+    def new_product(cls, new_dict):
+        """Создает объект класса Product"""
+        name = new_dict.get("name")
+        description = new_dict.get("description")
+        price = new_dict.get("price")
+        quantity = new_dict.get("quantity")
+        return cls(name, description, price, quantity)
+
+    @property
+    def price(self):
+        """Геттер цены"""
+        return self.__price
+
+    @price.setter
+    def price(self, new_price: int):
+        """Проверяет внедряемые цены"""
+        if new_price <= 0:
+            print("Цена не должна быть нулевая или отрицательная")
+        elif new_price < self.__price:
+            price_input = input(
+                "Хотите изменить цену ниже текущей? 'y' - 'да'/ 'n' - нет:"
+            )
+            if price_input == "y":
+                self.__price = new_price
+            else:
+                self.__price = self.__price
+            return
+        return
