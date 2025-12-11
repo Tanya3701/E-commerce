@@ -15,11 +15,7 @@ class Product:
     @classmethod
     def new_product(cls, new_dict):
         """Создает объект класса Product"""
-        name = new_dict.get("name")
-        description = new_dict.get("description")
-        price = new_dict.get("price")
-        quantity = new_dict.get("quantity")
-        return cls(name, description, price, quantity)
+        return cls(**new_dict)
 
     @property
     def price(self):
