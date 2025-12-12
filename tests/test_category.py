@@ -12,9 +12,9 @@ def test_category_init(first_category, second_category):
 
 def test_products_property(first_category):
     assert first_category.products == (
-        "Samsung Galaxy S23 Ultra 180000.0 руб. Остаток: 5 шт."
-        "\nIphone 15 210000.0 руб. Остаток: 8 шт."
-        "\nXiaomi Redmi Note 11 31000.0 руб. Остаток: 14 шт.\n"
+        "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
+        "\nIphone 15, 210000.0 руб. Остаток: 8 шт."
+        "\nXiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.\n"
     )
 
 
@@ -22,3 +22,7 @@ def test_products_setter(first_category, first_product):
     assert len(first_category.product_list) == 3
     first_category.products = first_product
     assert len(first_category.product_list) == 4
+
+
+def test_str_category(first_category):
+    assert str(first_category) == 'Смартфоны, количество продуктов: 27 шт.'

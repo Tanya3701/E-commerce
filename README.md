@@ -22,6 +22,9 @@ pip install -r requirements.txt
 """Класс продукты"""
 * class Product:
 
+"""Класс итератор"""
+* class ProductIterator: 
+
 """Преобразует json-файл в словарь"""
 * read_json
 
@@ -32,20 +35,25 @@ _________________________________________________________________ coverage: plat
 
 Name_________Cover
 --------------------------------------------
-src\__init__.py_________________100%
 
-src\category.py ______________100%
+src\__init__.py__________________100%
 
-src\product.py_______________100%
+src\category.py________________100%
 
-tests\__init__.py________________100%
+src\iterator.py__________________100%
 
-tests\conftest.py______________100%
+src\product.py__________________81%
 
-tests\test_category.py _________100%
+tests\__init__.py__________________100%
 
-tests\test_product.py__________100%
+tests\conftest.py________________100%
+
+tests\test_category.py____________100%
+
+tests\test_iterator.py_____________100%
+
+tests\test_product.py_____________100%
 
 --------------------------------------------
-
-TOTAL_____________________100%
+TOTAL    96%
+==================================================

@@ -17,6 +17,12 @@ class Category:
         Category.category_count += 1
         Category.product_count = len(products) if products else 0
 
+    def __str__(self):
+        inventory_level = []
+        for product in self.__products:
+            inventory_level.append(product.quantity)
+        return f"{self.name}, количество продуктов: {sum(inventory_level)} шт."
+
     def add_product(self, product):
         """Метод для добавления товаров в категорию"""
         self.__products.append(product)
@@ -27,9 +33,7 @@ class Category:
         """Геттер, который выводит список товаров в виде строк"""
         product_str = ""
         for product in self.__products:
-            product_str += (
-                f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
-            )
+            product_str += f"{str(product)}\n"
         return product_str
 
     @products.setter

@@ -1,6 +1,7 @@
 import pytest
 
 from src.category import Category
+from src.iterator import ProductIterator
 from src.product import Product
 
 
@@ -12,6 +13,11 @@ def first_product():
         price=180000.0,
         quantity=5,
     )
+
+
+@pytest.fixture
+def second_product():
+    return Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
 
 
 @pytest.fixture
@@ -41,3 +47,8 @@ def second_category():
         "станет вашим другом и помощником",
         products=[Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)],
     )
+
+
+@pytest.fixture
+def first_product_iterator(first_category):
+    return ProductIterator(first_category)

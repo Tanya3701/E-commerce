@@ -26,3 +26,11 @@ def test_product_setter(capsys, first_product):
     message = capsys.readouterr()
     assert message.out == "Цена не должна быть нулевая или отрицательная\n"
     first_product.quantity = 250000.0
+
+
+def test_str_product(first_product):
+    assert str(first_product) == 'Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.'
+
+
+def test_add_product(first_product, second_product):
+    assert first_product + second_product == 2580000
