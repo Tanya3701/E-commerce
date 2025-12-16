@@ -23,10 +23,14 @@ def test_product_add_product():
 def test_product_setter(capsys, first_product):
     first_product.price = 0
     message = capsys.readouterr()
-    assert message.out == "Цена не должна быть нулевая или отрицательная\n"
+    assert (
+        message.out.split("\n")[-2] == "Цена не должна быть нулевая или отрицательная"
+    )
     first_product.price = -20000.0
     message = capsys.readouterr()
-    assert message.out == "Цена не должна быть нулевая или отрицательная\n"
+    assert (
+        message.out.split("\n")[-2] == "Цена не должна быть нулевая или отрицательная"
+    )
     first_product.quantity = 250000.0
 
 

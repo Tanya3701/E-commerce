@@ -50,3 +50,9 @@ class Category:
     @property
     def product_list(self):
         return self.__products
+
+    def total_quantity(self):
+        inventory_level = []
+        for product in self.__products:
+            inventory_level.append(product.quantity)
+        return sum(inventory_level)
