@@ -75,3 +75,8 @@ def test_lawngrass_add(first_grass, second_grass):
     assert first_grass + second_grass == 16750.0
     with pytest.raises(TypeError):
         first_grass + 1
+
+
+def test_middle_price(first_category, category_zero_product):
+    assert first_category.middle_price() == 140333.3
+    assert category_zero_product.middle_price() == 0

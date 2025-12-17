@@ -1,5 +1,7 @@
 import pytest
 
+from src.product import Product
+
 
 def test_category_init(first_category, second_category):
     assert first_category.name == "Смартфоны"
@@ -34,3 +36,15 @@ def test_str_category(first_category):
 def test_isinstance_category_error(first_category):
     with pytest.raises(TypeError):
         first_category.products = 1
+
+
+def test_sero_quantity():
+    with pytest.raises(
+        ValueError, match="Товар с нулевым количеством не может быть добавлен"
+    ):
+        Product(
+            name="Samsung Galaxy S23 Ultra",
+            description="256GB, Серый цвет, 200MP камера",
+            price=180000.0,
+            quantity=0,
+        )

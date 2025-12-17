@@ -1,4 +1,5 @@
 from src.product import Product
+from src.user_exceptions import UserException
 
 
 class Category:
@@ -26,8 +27,17 @@ class Category:
     def add_product(self, product):
         """Метод для добавления товаров в категорию"""
         if isinstance(product, Product):
-            self.__products.append(product)
-            self.product_count += 1
+            try:
+                if product.quantity == 0:
+                    raise UserException("Количество товара не может быть равное нулю")
+            except UserException as e:
+                print(e)
+            else:
+                self.__products.append(product)
+                self.product_count += 1
+                print("Товар добавлен")
+            finally:
+                print("Информация о товаре обработана")
         else:
             raise TypeError
 
@@ -56,3 +66,14 @@ class Category:
         for product in self.__products:
             inventory_level.append(product.quantity)
         return sum(inventory_level)
+
+    def middle_price(self):
+        """Выводит среднюю цену товара"""
+        try:
+            return round(
+                sum(product.price for product in self.__products)
+                / len(self.__products),
+                1,
+            )
+        except ZeroDivisionError:
+            return 0
